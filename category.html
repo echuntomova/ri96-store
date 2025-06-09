@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Металлорежущий инструмент – РосИнструмент</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<header class="header">
+    <a href="index.html"><img src="images/logo.svg" alt="РосИнструмент" style="height:48px"></a>
+
+    <form class="search" onsubmit="return false">
+      <input type="search" placeholder="Поиск инструментов…">
+      <button type="submit" class="search-btn">Найти</button>
+    </form>
+
+    <a href="cart.html" class="cart-btn">
+      🛒
+      <span class="cart-count">0</span>
+    </a>
+  </header>
+
+ <div class="cat-filters">
+  <select id="catSort"  class="sort-select">
+    <option value="none">Сортировать…</option>
+    <option value="price-asc">Цена ↑</option>
+    <option value="price-desc">Цена ↓</option>
+    <option value="name-asc">Название A-Я</option>
+    <option value="name-desc">Название Я-A</option>
+  </select>
+
+  
+</div>
+<section class="products">
+  <div class="product-grid">
+
+    <!-- пример трёх товаров 62-64 -->
+    
+      <!-- товар #62 -->
+      <a href="product.html#62" class="product-card">
+        <img src="images/products/9is0j0j6w48v0e0lg1gpdjkrg5re1855.jpg" class="product-image" alt="">
+        <div class="product-info">
+          <div class="product-name">Борфреза коническая 90 гр, с двойной насечкой, тип K 6х6х3х50</div>
+          <div class="product-price">1621 ₽</div>
+        </div>
+  <button class="add-btn" onclick="alert('Добавлено в корзину')">В корзину</button>
+      </a>
+
+    <a href="product.html#64" class="product-card">
+        <img src="images/products/645fth8altjnbgskukqblj4ipczz2eza.jpg" class="product-image" alt="">
+        <div class="product-info">
+          <div class="product-name">Плашка G 1/2 для трубной цилиндрической резьбы, ГОСТ 9740-71 9ХС</div>
+          <div class="product-price">756.50 ₽</div>
+        </div>
+  <button class="add-btn" onclick="alert('Добавлено в корзину')">В корзину</button>
+      </a>
+
+    <a href="product.html#64" class="product-card">
+        <img src="images/products/bit31w9kkybriz9h5ap0npv2t2zg8ulr.jpg" class="product-image" alt="">
+        <div class="product-info">
+          <div class="product-name">Борфреза овальная с двойной насечкой, тип E 12х6х20х65</div>
+          <div class="product-price">1497.50 ₽</div>
+        </div>
+  <button class="add-btn" onclick="alert('Добавлено в корзину')">В корзину</button>
+      </a>
+
+  </div>
+</section>
+<script>
+    /* счётчик корзины — мини-заглушка */
+    let cartCount = 0;
+    function addToCart(id){
+      cartCount++;
+      document.querySelector('.cart-count').textContent = cartCount;
+      // можно хранить id в localStorage …
+    }
+
+    /* сортировка карточек */
+    const grid   = document.getElementById('productGrid');
+    const select = document.getElementById('sortSelect');
+
+    select.addEventListener('change', () => {
+      const cards = Array.from(grid.children);
+
+      cards.sort((a,b)=>{
+        const pa = +a.dataset.price, pb = +b.dataset.price;
+        const na = a.dataset.name.toLowerCase();
+        const nb = b.dataset.name.toLowerCase();
+
+        switch(select.value){
+          case 'price-asc' : return pa - pb;
+          case 'price-desc': return pb - pa;
+          case 'name-asc'  : return na.localeCompare(nb,'ru');
+          case 'name-desc' : return nb.localeCompare(na,'ru');
+          default          : return 0;
+        }
+      });
+
+      cards.forEach(c => grid.appendChild(c)); // перерисовали
+    });
+    document.querySelectorAll('.search input[type="search"]').forEach(inp=>{
+    inp.addEventListener('input',e=>{
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('.product-card').forEach(card=>{
+        const txt = card.dataset.name.toLowerCase();
+        card.style.display = txt.includes(q) ? '' : 'none';
+      });
+    });
+  });
+  </script>
+</body></html>
