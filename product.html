@@ -5,22 +5,32 @@
 <style>
   .detail {max-width:900px;margin:2rem auto;padding:0 1rem;display:grid;gap:2rem;grid-template-columns:1fr 1fr;}
   @media (max-width:700px){.detail{grid-template-columns:1fr}}
+  .question-btn {
+    background: var(--red, #e31e24);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: inline-block;
+  }
 </style>
 </head><body>
 
 <header class="header">
-    <a href="index.html"><img src="/images/logo.svg" alt="РосИнструмент" style="height:48px"></a>
+  <a href="index.html"><img src="/images/logo.svg" alt="РосИнструмент" style="height:48px"></a>
 
-    <form class="search" onsubmit="return false">
-      <input type="search" placeholder="Поиск инструментов…">
-      <button type="submit" class="search-btn">Найти</button>
-    </form>
+  <form class="search" onsubmit="return false">
+    <input type="search" placeholder="Поиск инструментов…">
+    <button type="submit" class="search-btn">Найти</button>
+  </form>
 
-    <a href="cart.html" class="cart-btn">
-      🛒
-      <span class="cart-count">0</span>
-    </a>
-  </header>
+  <a href="cart.html" class="cart-btn">
+    🛒 <span class="cart-count">0</span>
+  </a>
+</header>
 
 <main class="detail">
   <img src="/images/products/645fth8altjnbgskukqblj4ipczz2eza.jpg" alt="" style="width:100%;border-radius:8px">
@@ -35,10 +45,20 @@
       В корзину
     </button>
 
-    <a href="https://t.me/@RI_96_bot"
-   class="question-btn">Задать вопрос по товару</a>
-    
+    <!-- Кнопка "Задать вопрос" -->
+    <button class="question-btn" onclick="askQuestion()">Задать вопрос по товару</button>
   </div>
 </main>
+
+<!-- Telegram WebApp API -->
+<script>
+  function askQuestion() {
+  const tg = window.Telegram.WebApp;
+  if (tg && tg.sendData) {
+    tg.sendData("question:65");
+    alert("Данные отправлены");
+  }
+}
+</script>
 
 </body></html>
