@@ -53,12 +53,14 @@
 <!-- Telegram WebApp API -->
 <script>
   function askQuestion() {
-  const tg = window.Telegram.WebApp;
-  if (tg && tg.sendData) {
-    tg.sendData("question:65");
-    alert("Данные отправлены");
+    const tg = window.Telegram.WebApp;
+    if (tg && tg.sendData) {
+      tg.sendData("question:65");
+      tg.close();
+    } else {
+      alert("Откройте через Telegram");
+    }
   }
-}
 </script>
 
 </body></html>

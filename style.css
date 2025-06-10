@@ -450,14 +450,24 @@ body {
   gap:1rem;
 }
 
-.question-btn{
-  
-  display:block;
-  width:100%;
-  padding:.6rem 0;
-  background:var(--red);
-  color:#fff;font-weight:600;text-align:center;
-  border:none;border-radius:0 0 10px 10px;
-  cursor:pointer;transition:background .2s;
+.question-btn {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0;
+  background: var(--red);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: 0 0 10px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
-.question-btn:hover{background:var(--black-80)}
+
+.question-btn:hover {
+  background: #c91a1f;
+}
+
+.question-btn:active {
+  transform: scale(0.97);
+}
