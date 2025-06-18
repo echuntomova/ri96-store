@@ -54,11 +54,11 @@
 <script>
   function askQuestion() {
     const tg = window.Telegram.WebApp;
-    if (tg && tg.sendData) {
-      tg.sendData("question:65");
+    if (tg?.sendData) {
+      tg.sendData("question:Плашка G 1/2 для трубной цилиндрической резьбы");
       tg.close();
     } else {
-      alert("Откройте через Telegram");
+      alert("Пожалуйста, откройте через Telegram");
     }
   }
 </script>

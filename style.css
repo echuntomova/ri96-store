@@ -49,7 +49,7 @@ body {
   justify-content:center;
 }
 .banner{
-  flex:0 0 800px;   /* ширина видимой карточки */
+  flex:0 0 400px;   /* ширина видимой карточки */
   height:250px;
   position:relative;
   border-radius:10px;
@@ -175,10 +175,6 @@ body {
   justify-content:center;  /* по центру всей полосы */
 }
 
-
-
-
-
 /* Товары */
 .products {
   padding: 1rem 2rem;
@@ -237,7 +233,6 @@ body {
   font-weight: bold;
   font-size: 1.1rem;
 }
-
 /* Корзина */
 .cart-container {
   max-width: 800px;
@@ -453,7 +448,7 @@ body {
 .question-btn {
   display: block;
   width: 100%;
-  padding: 0.6rem 0;
+  padding: .6rem 0;
   background: var(--red);
   color: #fff;
   font-weight: 600;
@@ -461,7 +456,7 @@ body {
   border: none;
   border-radius: 0 0 10px 10px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background .2s;
 }
 
 .question-btn:hover {
