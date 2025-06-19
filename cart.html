@@ -21,13 +21,14 @@
 </header>
 
 <div class="cart-container">
+
   <!-- список товаров -->
   <div class="cart-items">
     <div class="cart-item">
       <img src="/images/products/645fth8altjnbgskukqblj4ipczz2eza.jpg" class="cart-item-image" alt="">
       <div class="cart-item-details">
         <div class="cart-item-name">
-          Плашка G&nbsp;1/2&nbsp;для&nbsp;трубной&nbsp;цилиндрической&nbsp;резьбы, ГОСТ 9740-71&nbsp;9ХС
+          Плашка G&nbsp;1/2&nbsp;для&nbsp;трубной&nbsp;цилиндрической&nbsp;резьбы, ГОСТ 9740-71 9ХС
         </div>
         <div class="cart-item-price">756.50 ₽ × 2 шт</div>
       </div>
@@ -38,12 +39,11 @@
   <div class="cart-total">Итого: 1 513 ₽</div>
 
   <!-- форма заказа -->
-  <form class="checkout-form" id="checkoutForm"
-        onsubmit="event.preventDefault(); window.location.href='success.html'">
+  <form id="checkoutForm" class="checkout-form">
 
     <!-- выбор доставки -->
     <div class="delivery-options">
-      <input type="radio" name="delivery" id="pickup" value="pickup" checked>
+      <input type="radio" name="delivery" id="pickup"  value="pickup"  checked>
       <label for="pickup">Самовывоз</label>
 
       <input type="radio" name="delivery" id="courier" value="courier">
@@ -73,24 +73,28 @@
 </div>
 
 <script>
-// один раз навешиваем redirect
-  document.getElementById('checkoutForm').addEventListener('submit', e => {
-    e.preventDefault();                 // гасим стандартную отправку
-    window.location.href = 'success.html';
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* 1. Перехватываем отправку формы */
+  const form = document.getElementById('checkoutForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();                 // отменяем реальную отправку
+    window.location.href = 'success.html';   // показываем «Заказ оформлен»
   });
 
-  // переключение самовывоз / доставка ⬇
-  const pickup   = document.getElementById('pickup');
-  const addrBox  = document.getElementById('deliveryAddr');
-  const pickupBox = document.getElementById('pickupNote');
+  /* 2. Переключаем блоки «самовывоз / доставка» */
+  const pickup     = document.getElementById('pickup');
+  const addrBox    = document.getElementById('deliveryAddr');
+  const pickupBox  = document.getElementById('pickupNote');
 
-  document.querySelectorAll('input[name="delivery"]').forEach(radio => {
-    radio.addEventListener('change', () => {
+  document.querySelectorAll('input[name="delivery"]').forEach(r => {
+    r.addEventListener('change', () => {
       const isPickup = pickup.checked;
       pickupBox.style.display = isPickup ? 'block' : 'none';
       addrBox.style.display   = isPickup ? 'none'  : 'block';
     });
   });
+});
 </script>
 </body>
 </html>
