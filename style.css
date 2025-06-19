@@ -465,3 +465,26 @@ body {
 .question-btn:active {
   transform: scale(0.97);
 }
+
+.confirmation {
+  max-width: 600px;
+  margin: 5rem auto;
+  text-align: center;
+  padding: 2rem;
+  background: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+.confirmation h1 {
+  font-size: 2rem;
+  color: green;
+}
+.confirmation .btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 1.6rem;
+  background: #d63333;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
